@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad 19</title>
+</head>
+<style>
+    body {
+        font-family: 'Boucherie Block', cursive; /* Cambio de la fuente */
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+    }
+    h1 {
+        color: #09F0A7; /* Color para el título */
+        text-align: center;
+        padding: 20px 0;
+        font-size: 24px;
+    }
+    a {
+        margin: 10px auto;
+        padding: 10px 20px;
+        background-color: #81F7C5; /* Color de fondo para los enlaces */
+        color: #0AAF69; /* Color de texto para los enlaces */
+        text-decoration: none;
+        text-align: center;
+        border: 1px solid #0AAF69; /* Color del borde de los enlaces */
+        border-radius: 5px;
+        width: 200px;
+        display: block;
+        transition: background-color 0.3s ease;
+        font-size: 16px;
+    }
+    a:hover {
+        background-color: #09F0A7; /* Color de fondo al pasar el cursor por encima */
+        color: #fff; /* Cambio de color de texto al pasar el cursor por encima */
+    }
+    .logout-link {
+        background-color: #ff0000; 
+        color: #ffffff;
+        border: 1px solid #ff0000;
+    }
+    .logout-link:hover {
+        background-color: #cc0000; 
+    }
+</style>
+<body>
+    {% if es_estudiante or es_admin or es_cajero %}
+        <h1> ¡Bienvenido {{ user.username }} al inicio de la página! </h1>
+    {% else %}
+        <h1> No tienes permisos para acceder a esta página </h1>
+    {% endif %}
+    <a href="{% url 'agregar_proveedor' %}">Agregar proveedor</a>
+    <a href="{% url 'mostrar_proveedores' %}">Mostrar proveedores</a>
+    <a href="{% url 'agregar_producto' %}">Agregar producto</a>
+    <a href="{% url 'mostrar_productos' %}">Mostrar productos</a>
+    <a href="{% url 'logout' %}" class="logout-link">Cerrar sesión</a>
+</body>
+</html>
